@@ -5,6 +5,8 @@ import { Container, CssBaseline } from '@mui/material';
 
 import Navbar from './components/Navbar';
 import Login from './components/Login';
+import SignUp from './components/Signup';
+import BlogList from './components/BlogList';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
     <Container>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/bloglist" element={<BlogList />} />
 
       </Routes>
     </Container>
