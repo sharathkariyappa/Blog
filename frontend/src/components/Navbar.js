@@ -16,7 +16,7 @@ const Navbar = () => {
           </Col>
 
           <Col>
-            <Button type="link" style={{ color: '#fff',fontSize: 'px',fontWeight: 'bold' }}>
+            <Button type="link" style={{ color: '#fff',fontSize: '18px',fontWeight: 'bold' }}>
               <Link to="/">Home</Link>
             </Button>
             <Button type="link" style={{ color: '#fff',fontSize: '18px',fontWeight: 'bold' }}>
