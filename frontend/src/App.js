@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Login from './components/Login';
 import SignUp from './components/Signup';
 import BlogList from './components/BlogList';
+import CreatePost from './components/CreatePost';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/bloglist" element={<BlogList />} />
+        <Route path="/createpost" element={<CreatePost />} />
 
       </Routes>
     </Container>

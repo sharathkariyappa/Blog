@@ -1,100 +1,134 @@
 import React from 'react';
-import { Form, Input, Button, Row, Col, Card } from 'antd';
+import {
+  Box,
+  TextField,
+  Button,
+  Typography,
+  Paper,
+  Grid,
+  Link,
+} from '@mui/material';
 
 const Login = () => {
-  const onFinish = (values) => {
-    console.log('Success:', values);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const values = {
+      email: formData.get('email'),
+      password: formData.get('password'),
+    };
+
+    console.log('Login Success:', values);
   };
 
   return (
-    <Row justify="center" align="middle" style={styles.row}>
-      <Col xs={24} sm={12} md={8} lg={6}>
-        <Card
-          title="Login"
-          bordered={false}
-          style={styles.card}
-        >
-          <Form
-            name="login"
-            initialValues={{ remember: true }}
-            onFinish={onFinish}
+    <Grid
+      container
+      justifyContent="center"
+      alignItems="center"
+      style={styles.grid}
+    >
+      <Grid item xs={10} sm={8} md={6} lg={4}>
+        <Paper elevation={3} style={styles.paper}>
+          <Typography variant="h4" align="center" style={styles.title}>
+            Login
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            style={styles.form}
           >
-            <Form.Item
+            <TextField
               name="email"
-              rules={[{ required: true, message: 'Please input your Email!' }, { type: 'email', message: 'Please input a valid Email!' }]}
-            >
-              <Input
-                placeholder="Email"
-                size="large"
-                style={styles.input}
-              />
-            </Form.Item>
-
-            <Form.Item
+              label="Email"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              required
+              type="email"
+              style={styles.textField}
+            />
+            <TextField
               name="password"
-              rules={[{ required: true, message: 'Please input your Password!' }]}
+              label="Password"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              required
+              type="password"
+              style={styles.textField}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              style={styles.submitButton}
             >
-              <Input.Password
-                placeholder="Password"
-                size="large"
-                style={styles.input}
-              />
-            </Form.Item>
-
-            <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
-                block
-                size="large"
-                style={styles.button}
-              >
-                Log in
-              </Button>
-            </Form.Item>
-
-            <Form.Item>
-              <Button type="link" block style={styles.forgotPassword}>
+              Log in
+            </Button>
+            <Box mt={2} display="flex" justifyContent="center">
+              <Link href="#" underline="hover" style={styles.link}>
                 Forgot password?
-              </Button>
-            </Form.Item>
-          </Form>
-        </Card>
-      </Col>
-    </Row>
+              </Link>
+            </Box>
+          </Box>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 
 const styles = {
-  row: {
-    height: '100vh',
+  grid: {
+    minHeight: '100vh',
     backgroundColor: '#f0f2f5',
-    margin: 0,
   },
-  card: {
-    padding: '20px',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  paper: {
+    padding: '30px',
+    borderRadius: '10px',
     backgroundColor: '#fff',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
   },
-  input: {
+  title: {
+    marginBottom: '20px',
+    fontWeight: 'bold',
+  },
+  form: {
+    marginTop: '10px',
+  },
+  textField: {
     borderRadius: '8px',
-    marginBottom: '15px',
-    fontSize: '16px',
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#ccc', // Default border
+      },
+      '&:hover fieldset': {
+        borderColor: '#1890ff', // Blue border on hover
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#1976d2', // Darker blue border when focused
+      },
+    },
   },
-  checkbox: {
-    fontSize: '14px',
-  },
-  button: {
-    borderRadius: '8px',
-    backgroundColor: '#1890ff',
-    borderColor: '#1890ff',
+  submitButton: {
+    marginTop: '20px',
+    backgroundColor: '#1976d2',
+    color: '#fff',
     fontWeight: 'bold',
     fontSize: '16px',
+    borderRadius: '8px',
+    '&:hover': {
+      backgroundColor: '#005bb5',
+    },
   },
-  forgotPassword: {
-    color: '#1890ff',
+  link: {
+    color: '#1976d2',
     fontWeight: 'bold',
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
   },
 };
 

@@ -46,7 +46,7 @@ const BlogList = () => {
         <Button
           type="dashed"
           size="large"
-          href="/create"
+          href="/createpost"
           style={styles.createButton}
         >
           Create New Post
